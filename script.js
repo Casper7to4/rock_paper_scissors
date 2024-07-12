@@ -27,46 +27,60 @@ function playRound(humanChoice, computerChoice)
         result = "You tied";
     } else if (humanChoice == 'rock' & computerChoice == 'paper') {
         result = "You lose";
-        computerScore = + 1;
+        computerScore++;
     } else if (humanChoice == 'rock' & computerChoice == 'scissors') {
         result = "You win";
-        humanScore = + 1;
+        humanScore++;
     } else if (humanChoice == 'paper' & computerChoice == 'paper') {
         result = "You tied";
     } else if (humanChoice == 'paper' & computerChoice == 'scissors') {
         result = "You lose";
-        computerScore = + 1;
+        computerScore++;
     } else if (humanChoice == 'paper' & computerChoice == 'rock') {
         result = "You win";
-        humanScore = + 1;
+        humanScore++;
     } else if (humanChoice == 'scissors' & computerChoice == 'scissors') {
         result = "You tied";
     } else if (humanChoice == 'scissors' & computerChoice == 'rock') {
         result = "You lose";
-        computerScore = + 1;
+        computerScore++;
     } else if (humanChoice == 'scissors' & computerChoice == 'paper') {
         result = "You win";
-        humanScore = + 1;
+        humanScore++;
     }
-    return result;
+    console.log("You chose " + humanChoice);
+    console.log("The computer chose " + computerChoice);
+    console.log(result);
 } 
 
 let humanScore = 0;
 let computerScore = 0;
 
 function playGame() {
+    for (let i = 0; i < 5; i++) {
+    let humanSelection = getHumanChoice();
+    let computerSelection = getComputerChoice();   
+    playRound(humanSelection, computerSelection);
+    }
+    let result;
+    if (humanScore > computerScore) {
+        result = "You won the match! ";
+    }
+    else if (humanScore < computerScore) {
+        result = "You suck! You lost ";
+    }
+    else {
+        result = "Draw!";
+    }
+    alert(result);
+        
 
 }
 
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-let roundResult = playRound(humanSelection, computerSelection);
 
 
-console.log(computerSelection);
-console.log(humanSelection); 
-console.log(roundResult);
-console.log(humanScore);
-console.log(computerScore);
+let gameResult = playGame()
+
+
+console.log("Final Score: You - " + humanScore + " Vs Computer " + computerScore);
